@@ -16,18 +16,21 @@
 // IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#include "Shared/Platform/iOS.xcconfig"
-#include "Shared/Product/DynamicFramework.xcconfig"
-#include "Version.xcconfig"
+#import "FBSDKSettingsInitializer.h"
 
-PRODUCT_NAME = FacebookCore
-PRODUCT_BUNDLE_IDENTIFIER = com.facebook.swift.core
+#import <FBSDKCoreKit/FBSDKSettings.h>
 
-SWIFT_VERSION = 4.0
+@interface FBSDKSettings (Internal)
 
-IPHONEOS_DEPLOYMENT_TARGET = 8.0
++ (void)setUserAgentSuffix:(NSString *)suffix;
 
-INFOPLIST_FILE = $(SRCROOT)/Resources/Info.plist
+@end
 
-// Enable testability to make internal things visible with @testable import
-ENABLE_TESTABILITY = YES
+@implementation FBSDKSettingsInitializer
+
++ (void)load
+{
+  [FBSDKSettings setUserAgentSuffix:@"swift"];
+}
+
+@end
