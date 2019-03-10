@@ -1,1 +1,2 @@
-github "facebook/facebook-objc-sdk" ~> 5.0
+github "iwooltd/facebook-objc-sdk" ~> 5.0
+
